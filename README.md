@@ -90,8 +90,7 @@ python -m pip install -e ".[monitor]"
 <details>
 <summary><strong>Install published packages</strong></summary>
 
-The renamed packages need a release on PyPI/npm before the registry commands
-in this README can be used. Once that release is available:
+To install a published Python release from PyPI:
 
 ```bash
 pip install finance-kit
@@ -442,6 +441,18 @@ The [release workflow](.github/workflows/release.yml) creates a release when a
 pull request merges into `main`, publishes Python/npm packages, and attaches
 the plugin ZIP. The [publish workflow](.github/workflows/publish.yml) also handles
 published GitHub releases. Pushing a tag alone does not trigger either workflow.
+
+To publish only the Python package at the version in `pyproject.toml`, run:
+
+```bash
+gh workflow run publish.yml --repo hongbietcode/finance-kit --ref main
+```
+
+PyPI Trusted Publishing must authorize repository `hongbietcode/finance-kit`,
+workflow `publish.yml`, and environment `release`. Configure a pending publisher
+in [PyPI account publishing settings](https://pypi.org/manage/account/publishing/)
+before the first release under a new package name. The merge-triggered release
+workflow uses `release.yml` and needs its own trusted publisher.
 
 To build the plugin archive locally, run `npm run package` inside `cli/` after
 building the installer. The output is `cli/finance-kit-<version>.zip` and includes

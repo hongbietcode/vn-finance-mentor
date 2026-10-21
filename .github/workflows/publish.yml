@@ -1,12 +1,14 @@
 name: Publish
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
 jobs:
   publish-pypi:
     runs-on: ubuntu-latest
+    environment: release
     permissions:
       id-token: write
     steps:
@@ -17,6 +19,7 @@ jobs:
           python-version: "3.12"
 
       - name: Set version from tag
+        if: github.event_name == 'release'
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           sed -i "s/^version = \".*\"/version = \"${VERSION}\"/" pyproject.toml
@@ -30,6 +33,7 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
 
   package-plugin:
+    if: github.event_name == 'release'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -60,6 +64,7 @@ jobs:
             --clobber
 
   publish-npm:
+    if: github.event_name == 'release'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
