@@ -1,4 +1,4 @@
-"""Enums and type aliases for claude-finance-kit."""
+"""Enums and type aliases for finance-kit."""
 
 from enum import Enum
 

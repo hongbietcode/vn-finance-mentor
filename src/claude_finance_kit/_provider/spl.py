@@ -17,7 +17,7 @@ _TZ = ZoneInfo("Asia/Ho_Chi_Minh")
 _DATE_FMT = "%Y-%m-%d"
 _HEADERS = {
     "accept": "application/json",
-    "user-agent": "claude-finance-kit/1.0",
+    "user-agent": "finance-kit/1.0",
 }
 
 

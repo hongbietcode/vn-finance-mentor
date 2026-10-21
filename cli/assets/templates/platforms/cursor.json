@@ -3,7 +3,7 @@
   "displayName": "Cursor",
   "folderStructure": {
     "root": ".cursor",
-    "skillPath": "rules/claude-finance-kit",
+    "skillPath": "rules/finance-kit",
     "filename": "SKILL.md"
   },
   "components": {
@@ -14,5 +14,5 @@
   "frontmatter": {
     "format": "yaml"
   },
-  "description": "claude-finance-kit skills and API references for Cursor."
+  "description": "finance-kit skills and API references for Cursor."
 }

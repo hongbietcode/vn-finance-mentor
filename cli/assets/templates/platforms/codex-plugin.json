@@ -1,0 +1,19 @@
+{
+  "platform": "codex-plugin",
+  "displayName": "Codex Plugin",
+  "folderStructure": {
+    "root": ".codex/plugins/finance-kit",
+    "skillPath": "skills",
+    "filename": "SKILL.md"
+  },
+  "components": {
+    "skills": true,
+    "references": false,
+    "agents": false
+  },
+  "frontmatter": {
+    "format": "yaml"
+  },
+  "pluginManifest": ".codex-plugin/plugin.json",
+  "description": "Codex plugin with bundled skills, scripts, references, and a repository marketplace entry."
+}

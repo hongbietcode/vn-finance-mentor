@@ -14,5 +14,5 @@
   "frontmatter": {
     "format": "yaml"
   },
-  "description": "Full claude-finance-kit plugin with skills, agents, hooks, commands, and references."
+  "description": "Full finance-kit plugin with skills, agents, hooks, commands, and references."
 }

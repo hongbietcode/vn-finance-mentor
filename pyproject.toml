@@ -3,14 +3,14 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "claude-finance-kit"
+name = "finance-kit"
 version = "0.2.0"
 description = "Vietnam and US market data, research signals, and paper monitoring"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
 authors = [
-    { name = "claude-finance-kit contributors" },
+    { name = "finance-kit contributors" },
 ]
 keywords = ["vietnam", "us-stocks", "stock", "finance", "market", "analysis", "backtest"]
 classifiers = [
@@ -58,7 +58,7 @@ news = [
     "pyarrow>=14.0.0",
 ]
 all = [
-    "claude-finance-kit[ta,collector,monitor,news,search]",
+    "finance-kit[ta,collector,monitor,news,search]",
 ]
 dev = [
     "pytest>=7.0.0",
@@ -70,9 +70,9 @@ dev = [
 cfk = "claude_finance_kit.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/hongbietcode/claude-finance-kit"
-Repository = "https://github.com/hongbietcode/claude-finance-kit"
-Issues = "https://github.com/hongbietcode/claude-finance-kit/issues"
+Homepage = "https://github.com/hongbietcode/finance-kit"
+Repository = "https://github.com/hongbietcode/finance-kit"
+Issues = "https://github.com/hongbietcode/finance-kit/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/claude_finance_kit"]

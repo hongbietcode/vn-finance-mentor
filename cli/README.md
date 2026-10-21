@@ -1,56 +1,112 @@
-# claude-finance-kit-cli
+# finance-kit-cli
 
-CLI to install [claude-finance-kit](https://github.com/hongbietcode/claude-finance-kit) plugin for AI coding assistants.
+CLI to install [finance-kit](https://github.com/hongbietcode/finance-kit) plugin for AI coding assistants.
 
 Supports **Codex**, **Claude Code**, **Cursor**, and **GitHub Copilot**.
 
 ## Install
 
+### From source
+
+Build the installer from this directory with Node.js 20+:
+
 ```bash
-npx claude-finance-kit-cli init --ai claude    # Claude Code
-npx claude-finance-kit-cli init --ai codex     # Codex
-npx claude-finance-kit-cli init --ai cursor    # Cursor
-npx claude-finance-kit-cli init --ai copilot   # GitHub Copilot
-npx claude-finance-kit-cli init                # Interactive (auto-detect)
+npm ci
+npm run build
+```
+
+Run it from the project where you want to install Finance Kit:
+
+```bash
+node /absolute/path/to/finance-kit/cli/dist/index.js init --ai codex-plugin
+```
+
+The Python library must be installed in the environment used by your assistant.
+See the [source installation guide](../README.md#installation) for the Python
+setup and compatibility notes.
+
+### From npm
+
+These commands require publication of the renamed `finance-kit-cli` package:
+
+```bash
+npx finance-kit-cli init --ai claude       # Claude Code
+npx finance-kit-cli init --ai codex        # Codex standalone skill
+npx finance-kit-cli init --ai codex-plugin # Codex plugin + marketplace
+npx finance-kit-cli init --ai cursor       # Cursor
+npx finance-kit-cli init --ai copilot      # GitHub Copilot
+npx finance-kit-cli init                   # Interactive (auto-detect)
 ```
 
 ## What Gets Installed
 
-| Platform    | Skills | Agents | Bundled references |
-| ----------- | ------ | ------ | ------------------ |
-| Claude Code | 1      | 5      | 9                  |
-| Codex       | 1      | -      | 9                  |
-| Cursor      | 1      | -      | 9                  |
-| Copilot     | 1      | -      | 9                  |
+The [platform templates](assets/templates/platforms/) define each assistant's
+installation layout. The [Finance Kit skill](assets/skills/finance-kit/SKILL.md)
+bundles the analysis workflows, references, and Python scripts.
 
-**Skill:** finance-kit (orchestrator + all analysis workflows)
+`codex` installs the standalone skill to `.agents/skills/finance-kit/`.
+`codex-plugin` creates `.codex/plugins/finance-kit/` with a
+`.codex-plugin/plugin.json` manifest and bundled skill, then adds it to
+`.agents/plugins/marketplace.json`. Existing marketplace metadata and other
+plugins are preserved; an existing entry named `finance-kit` is replaced.
 
-**Agents** (Claude only): fundamental-analyst, technical-analyst, macro-researcher, lead-analyst
+From the target project, register the generated marketplace:
+
+```bash
+codex plugin marketplace add .
+codex plugin marketplace list
+```
+
+Restart the ChatGPT desktop app and install Finance Kit from that marketplace
+in the Plugins Directory. If the project already has a marketplace, choose its
+existing display name.
+
+The repository itself also provides a Codex marketplace pointing to `cli/assets/`.
+See the [official marketplace format](https://developers.openai.com/plugins/build/plugins#marketplace-metadata).
+
+Claude Code also receives the [bundled specialist agents](assets/agents/).
+Codex uses role prompts or sequential analysis as described in the skill.
 
 ## Prerequisites
 
 ```bash
-pip install claude-finance-kit
+pip install finance-kit
 ```
 
-Python >= 3.10 required. See [claude-finance-kit on PyPI](https://pypi.org/project/claude-finance-kit/).
+Use Python 3.12 for the verified setup. The command above requires a release
+under the new PyPI name; use the [source installation guide](../README.md#installation)
+until then. Python imports remain `claude_finance_kit`.
 
 ## Commands
 
 ```bash
-npx claude-finance-kit-cli init --ai <platform>       # Install plugin
-npx claude-finance-kit-cli uninstall --ai <platform>   # Remove plugin
-npx claude-finance-kit-cli --version                    # Show version
+npx finance-kit-cli init --ai <platform>      # Install plugin or skill
+npx finance-kit-cli uninstall --ai <platform> # Remove generated files
+npx finance-kit-cli --version                # Show version
 ```
 
 ## Uninstall
 
+For a source build, run this from the target project and confirm the prompt:
+
 ```bash
-npx claude-finance-kit-cli uninstall --ai claude
-npx claude-finance-kit-cli uninstall --ai codex
-npx claude-finance-kit-cli uninstall --ai cursor
-npx claude-finance-kit-cli uninstall --ai copilot
+node /absolute/path/to/finance-kit/cli/dist/index.js uninstall --ai codex-plugin
 ```
+
+For the published CLI:
+
+```bash
+npx finance-kit-cli uninstall --ai claude
+npx finance-kit-cli uninstall --ai codex
+npx finance-kit-cli uninstall --ai codex-plugin
+npx finance-kit-cli uninstall --ai cursor
+npx finance-kit-cli uninstall --ai copilot
+```
+
+Uninstalling `codex-plugin` removes its generated plugin folder and matching
+marketplace entry while retaining other entries and the marketplace file.
+For a plugin installed through the Plugins Directory, manage its installation
+there; the CLI uninstall command applies to files generated by this installer.
 
 ## License
 

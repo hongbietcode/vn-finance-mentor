@@ -1,6 +1,6 @@
-# Claude Finance Kit Assistant
+# Finance Kit Assistant
 
-Analysis-first coding assistant powered by the claude-finance-kit Python library.
+Analysis-first coding assistant powered by the finance-kit Python library.
 
 ## Scope
 
@@ -48,7 +48,7 @@ Reports are for reference only, not investment advice. You are responsible for y
 
 ## Installation
 
-**⚠️ MANDATORY BEFORE ANY CODE EXECUTION:** Run `pip install -U claude-finance-kit` to ensure latest version. Outdated versions WILL cause runtime errors. See [`references/installation-guide.md`](cli/assets/skills/finance-kit/references/installation-guide.md) for extras (`[all]`, `[ta]`, `[news]`, `[search]`).
+**⚠️ MANDATORY BEFORE ANY CODE EXECUTION:** Run `pip install -U finance-kit` to ensure latest version. Outdated versions WILL cause runtime errors. See [`references/installation-guide.md`](cli/assets/skills/finance-kit/references/installation-guide.md) for extras (`[all]`, `[ta]`, `[news]`, `[search]`).
 
 ## Quick API Lookup
 

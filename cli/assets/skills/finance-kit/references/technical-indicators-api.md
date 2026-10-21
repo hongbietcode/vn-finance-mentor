@@ -1,6 +1,6 @@
 # API Reference — Technical Analysis
 
-Requires `pip install claude-finance-kit[ta]`.
+Requires `pip install finance-kit[ta]`.
 
 ## Setup
 

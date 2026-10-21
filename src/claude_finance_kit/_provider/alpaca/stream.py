@@ -50,7 +50,7 @@ class AlpacaStreamProvider(AsyncStreamProvider):
         try:
             import websockets
         except ImportError as exc:
-            raise ImportError("websockets is required: pip install claude-finance-kit[monitor]") from exc
+            raise ImportError("websockets is required: pip install finance-kit[monitor]") from exc
         self.websocket = await websockets.connect(self.URI, ping_interval=20, ping_timeout=20)
         await self.websocket.send(
             json.dumps({"action": "auth", "key": self.api_key, "secret": self.api_secret})

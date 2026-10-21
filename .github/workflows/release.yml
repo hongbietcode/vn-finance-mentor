@@ -128,7 +128,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload "${{ needs.release.outputs.tag }}" \
-            "cli/claude-finance-kit-${{ needs.release.outputs.version }}.zip" \
+            "cli/finance-kit-${{ needs.release.outputs.version }}.zip" \
             --clobber
 
   publish-npm:

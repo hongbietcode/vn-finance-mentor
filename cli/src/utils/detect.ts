@@ -32,6 +32,8 @@ export function getAITypeDescription(aiType: AIType): string {
       return 'Claude Code (.claude/)';
     case 'codex':
       return 'Codex (.agents/skills/)';
+    case 'codex-plugin':
+      return 'Codex Plugin (.codex/plugins/finance-kit/)';
     case 'cursor':
       return 'Cursor (.cursor/rules/)';
     case 'copilot':

@@ -1,14 +1,14 @@
-# claude-finance-kit Python Package Installation Guide
+# finance-kit Python Package Installation Guide
 
 Always install **latest version**. Check first: if `.venv/` exists and `import claude_finance_kit` works, upgrade instead.
 
 ```bash
-pip install -U claude-finance-kit              # Core (upgrade to latest)
-pip install -U "claude-finance-kit[all]"       # All optional dependencies
-pip install -U "claude-finance-kit[ta]"        # + Technical analysis
-pip install -U "claude-finance-kit[collector]" # + Batch data collector
-pip install -U "claude-finance-kit[news]"      # + News crawlers
-pip install -U "claude-finance-kit[search]"    # + Perplexity web search
+pip install -U finance-kit              # Core (upgrade to latest)
+pip install -U "finance-kit[all]"       # All optional dependencies
+pip install -U "finance-kit[ta]"        # + Technical analysis
+pip install -U "finance-kit[collector]" # + Batch data collector
+pip install -U "finance-kit[news]"      # + News crawlers
+pip install -U "finance-kit[search]"    # + Perplexity web search
 ```
 
 Requires Python >= 3.10.

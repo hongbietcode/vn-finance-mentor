@@ -8,6 +8,7 @@ import { AI_TYPES } from '../types/index.js';
 import { detectAIType, getAITypeDescription } from '../utils/detect.js';
 import { loadPlatformConfig } from '../utils/template.js';
 import { logger } from '../utils/logger.js';
+import { unregisterPlugin } from '../utils/marketplace.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ASSETS_DIR = join(__dirname, '..', '..', 'assets');
@@ -30,7 +31,7 @@ async function removeBundledEntries(sourceDir: string, destinationDir: string): 
 }
 
 export async function uninstallCommand(options: UninstallOptions): Promise<void> {
-  logger.title('claude-finance-kit Uninstaller');
+  logger.title('finance-kit Uninstaller');
 
   let aiType = options.ai;
 
@@ -69,12 +70,19 @@ export async function uninstallCommand(options: UninstallOptions): Promise<void>
     const confirm = await prompts({
       type: 'confirm',
       name: 'proceed',
-      message: `Remove claude-finance-kit files from ${chalk.red(skillDir)}?`,
+      message: `Remove finance-kit files from ${chalk.red(skillDir)}?`,
       initial: false,
     });
 
     if (!confirm.proceed) {
       logger.warn('Uninstall cancelled');
+      return;
+    }
+
+    if (config.pluginManifest) {
+      await unregisterPlugin(cwd, config.folderStructure.root);
+      await rm(componentRoot, { recursive: true, force: true });
+      logger.success(`finance-kit removed from ${getAITypeDescription(aiType)}`);
       return;
     }
 
@@ -90,7 +98,7 @@ export async function uninstallCommand(options: UninstallOptions): Promise<void>
       const agentsDir = join(componentRoot, 'agents');
       await removeBundledEntries(join(ASSETS_DIR, 'agents'), agentsDir);
     }
-    logger.success(`claude-finance-kit removed from ${getAITypeDescription(aiType)}`);
+    logger.success(`finance-kit removed from ${getAITypeDescription(aiType)}`);
   } catch (error) {
     if (error instanceof Error) {
       logger.error(error.message);

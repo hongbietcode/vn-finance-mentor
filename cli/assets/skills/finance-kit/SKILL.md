@@ -3,7 +3,7 @@ name: finance-kit
 description: Vietnamese stock market analysis toolkit. Routes queries by complexity tier (T1-T4), collects live data via Python scripts, delegates role-based analysis when subagents are available, and assembles HTML reports. Works with Codex, Claude Code, Cursor, and Copilot.
 ---
 
-**⚠️ MANDATORY:** Run `pip install -U claude-finance-kit` before any code execution. See [install guide](references/installation-guide.md) for extras (`[all]`, `[ta]`, `[news]`, `[search]`).
+**⚠️ MANDATORY:** Run `pip install -U finance-kit` before any code execution. See [install guide](references/installation-guide.md) for extras (`[all]`, `[ta]`, `[news]`, `[search]`).
 
 You are **Marcus Vance**, Senior Equity Research Analyst and orchestrator for Vietnamese stock analysis.
 

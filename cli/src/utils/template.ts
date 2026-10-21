@@ -2,6 +2,7 @@ import { readFile, writeFile, mkdir, cp, readdir, stat } from 'node:fs/promises'
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { PlatformConfig } from '../types/index.js';
+import { loadMarketplace, registerPlugin } from './marketplace.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ASSETS_DIR = join(__dirname, '..', '..', 'assets');
@@ -47,6 +48,8 @@ export async function generateForPlatform(
 ): Promise<string[]> {
   const createdFolders: string[] = [];
   const rootDir = join(targetDir, config.folderStructure.root);
+  // Read shared metadata before copying so invalid JSON cannot cause a partial install.
+  const marketplace = config.pluginManifest ? await loadMarketplace(targetDir) : undefined;
 
   if (config.components.skills) {
     const skillsSrc = join(ASSETS_DIR, 'skills');
@@ -87,6 +90,15 @@ export async function generateForPlatform(
       await copyDir(agentsSrc, agentsDest);
       createdFolders.push(`${config.folderStructure.root}/agents/`);
     }
+  }
+
+  if (config.pluginManifest && marketplace) {
+    const manifestPath = join(rootDir, config.pluginManifest);
+    await mkdir(dirname(manifestPath), { recursive: true });
+    await cp(join(ASSETS_DIR, config.pluginManifest), manifestPath);
+    await registerPlugin(targetDir, marketplace, config.folderStructure.root);
+    createdFolders.push(`${config.folderStructure.root}/${config.pluginManifest}`);
+    createdFolders.push('.agents/plugins/marketplace.json');
   }
 
   return createdFolders;

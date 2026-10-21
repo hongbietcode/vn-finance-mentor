@@ -1,13 +1,13 @@
 {
-  "name": "claude-finance-kit",
+  "name": "finance-kit",
   "version": "0.2.0",
   "description": "Vietnam-focused Codex analysis workflows plus VN/US Python market-data, backtest, and paper-monitor APIs.",
   "author": {
     "name": "hongbietcode",
     "url": "https://github.com/hongbietcode"
   },
-  "homepage": "https://github.com/hongbietcode/claude-finance-kit",
-  "repository": "https://github.com/hongbietcode/claude-finance-kit",
+  "homepage": "https://github.com/hongbietcode/finance-kit",
+  "repository": "https://github.com/hongbietcode/finance-kit",
   "license": "MIT",
   "keywords": [
     "stock",
@@ -18,7 +18,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Claude Finance Kit",
+    "displayName": "Finance Kit",
     "shortDescription": "Vietnamese market data and analysis workflows.",
     "longDescription": "Analyze Vietnamese stocks, bonds, market valuation, macro data, funds, commodities, technical indicators, and financial news.",
     "developerName": "hongbietcode",
@@ -27,7 +27,7 @@
       "Read",
       "Execute"
     ],
-    "websiteURL": "https://github.com/hongbietcode/claude-finance-kit",
+    "websiteURL": "https://github.com/hongbietcode/finance-kit",
     "defaultPrompt": [
       "Analyze FPT stock with current data.",
       "Create today's Vietnam market briefing.",

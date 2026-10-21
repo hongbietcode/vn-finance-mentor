@@ -1,6 +1,6 @@
 # API Reference — News & Collector
 
-## News (requires `claude-finance-kit[news]`)
+## News (requires `finance-kit[news]`)
 
 ### Crawlers
 
@@ -62,7 +62,7 @@ cafef, cafebiz, vietstock, vneconomy, plo, vnexpress, tuoitre, ktsg, ncdt, dddn,
 - If 429 error, wait 1-2 hours before retrying
 - Content may contain HTML — strip manually if needed
 
-## Collector (requires `claude-finance-kit[collector]`)
+## Collector (requires `finance-kit[collector]`)
 
 ### Quick Start
 

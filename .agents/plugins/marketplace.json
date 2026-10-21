@@ -1,0 +1,20 @@
+{
+  "name": "finance-kit",
+  "interface": {
+    "displayName": "Finance Kit"
+  },
+  "plugins": [
+    {
+      "name": "finance-kit",
+      "source": {
+        "source": "local",
+        "path": "./cli/assets"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Finance"
+    }
+  ]
+}

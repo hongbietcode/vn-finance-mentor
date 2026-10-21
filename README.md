@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">claude-finance-kit</h1>
+  <h1 align="center">finance-kit</h1>
   <p align="center">
     Vietnam and US market data, research signals, and paper monitoring.
     <br />
@@ -8,20 +8,21 @@
 </p>
 
 <p align="center">
-  <a href="https://pypi.org/project/claude-finance-kit/"><img src="https://img.shields.io/pypi/v/claude-finance-kit?color=blue&label=PyPI" alt="PyPI Version" /></a>
-  <a href="https://www.npmjs.com/package/claude-finance-kit-cli"><img src="https://img.shields.io/npm/v/claude-finance-kit-cli?color=green&label=npm" alt="npm Version" /></a>
-  <a href="https://pypi.org/project/claude-finance-kit/"><img src="https://img.shields.io/pypi/pyversions/claude-finance-kit" alt="Python Versions" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/hongbietcode/claude-finance-kit" alt="License" /></a>
+  <a href="https://pypi.org/project/finance-kit/"><img src="https://img.shields.io/pypi/v/finance-kit?color=blue&label=PyPI" alt="PyPI Version" /></a>
+  <a href="https://www.npmjs.com/package/finance-kit-cli"><img src="https://img.shields.io/npm/v/finance-kit-cli?color=green&label=npm" alt="npm Version" /></a>
+  <a href="https://pypi.org/project/finance-kit/"><img src="https://img.shields.io/pypi/pyversions/finance-kit" alt="Python Versions" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/hongbietcode/finance-kit" alt="License" /></a>
 </p>
 
 ---
 
 ## Overview
 
-**claude-finance-kit** is a Python library for Vietnam/US market data,
+**finance-kit** is a Python library for Vietnam/US market data,
 deterministic research signals, backtesting, and self-hosted paper monitoring.
-Its existing AI plugin remains focused on Vietnamese market analysis and ships
-valid manifests for **Codex** and **Claude Code**.
+The AI plugin provides Vietnamese market analysis for **Codex**, **Claude Code**,
+**Cursor**, and **GitHub Copilot**, with repository marketplaces for Codex and
+Claude Code.
 
 Version `0.2.0` adds the self-hosted VN/US market monitor runtime alongside the
 existing data and strategy APIs.
@@ -38,15 +39,16 @@ Ask natural language questions — the plugin auto-routes to the right analysis 
 ### Example: Stock Analysis in Action
 
 <p align="center">
-  <a href="https://github.com/hongbietcode/claude-finance-kit/releases/latest">
-    <img src="assets/image.png" alt="Claude Finance Kit analyzing HPG stock" width="800" />
+  <a href="https://github.com/hongbietcode/finance-kit/releases/latest">
+    <img src="assets/image.png" alt="Finance Kit analyzing HPG stock" width="800" />
   </a>
   <br />
-  <em>Claude Code analyzing HPG stock — orchestrating fundamental and technical agents in parallel. <a href="https://github.com/hongbietcode/claude-finance-kit/releases/latest">Download plugin →</a></em>
+  <em>Claude Code analyzing HPG stock — orchestrating fundamental and technical agents in parallel. <a href="https://github.com/hongbietcode/finance-kit/releases/latest">Download plugin →</a></em>
 </p>
 
 ## Features
 
+- **Codex Marketplace** — install the bundled plugin from this repository or generate a plugin and marketplace in another project
 - **Stock Analysis** — valuation, financial health, technical indicators, screening, sentiment, sector analysis
 - **Market Research** — market valuation (P/E, P/B), sector comparison, fund analysis, commodities
 - **Technical Analysis** — 30+ indicators: SMA, EMA, RSI, MACD, Bollinger Bands, ATR, OBV, and more
@@ -62,20 +64,49 @@ Ask natural language questions — the plugin auto-routes to the right analysis 
 
 ## Installation
 
-### 1. Install the Python library
+The Python distribution is `finance-kit`, the npm installer is `finance-kit-cli`,
+and its executable is `finance-kit`. Python code continues to import
+`claude_finance_kit`; monitor commands use `cfk`.
+
+Use Python **3.12** for the verified setup. The package currently declares
+Python 3.10+, but Python 3.10 has a known import failure involving `datetime.UTC`.
+
+### 1. Install the Python library from source
+
+From the repository root:
 
 ```bash
-pip install claude-finance-kit
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e .
+```
+
+For realtime monitoring, install the extra in the same environment:
+
+```bash
+python -m pip install -e ".[monitor]"
+```
+
+<details>
+<summary><strong>Install published packages</strong></summary>
+
+The renamed packages need a release on PyPI/npm before the registry commands
+in this README can be used. Once that release is available:
+
+```bash
+pip install finance-kit
 ```
 
 For realtime monitoring:
 
 ```bash
-pip install "claude-finance-kit[monitor]"
+pip install "finance-kit[monitor]"
 cfk monitor init
 cfk monitor doctor
 cfk monitor run
 ```
+
+</details>
 
 `monitor doctor` performs live data, stream-auth/entitlement, and Telegram
 authentication probes by default. Use `--offline` only for a local
@@ -86,15 +117,60 @@ configuration check.
 <details>
 <summary><strong>Codex</strong></summary>
 
-Install the repo-local skill into Codex's documented `.agents/skills/` location:
+**Install through the repository marketplace**
+
+From the repository root, register the marketplace with Codex:
 
 ```bash
-npx claude-finance-kit-cli init --ai codex
+codex plugin marketplace add .
+codex plugin marketplace list
 ```
 
-Restart Codex if the skill does not appear immediately, then invoke `$finance-kit` or ask a Vietnamese-market analysis question naturally. Release ZIPs also contain the required `.codex-plugin/plugin.json` manifest for plugin distribution.
+The [Codex marketplace catalog](.agents/plugins/marketplace.json) exposes the
+[bundled plugin](cli/assets/.codex-plugin/plugin.json). Restart the ChatGPT desktop app, open the Plugins Directory,
+choose the **Finance Kit** marketplace, and install **Finance Kit**.
 
-See OpenAI's [Codex plugin structure](https://learn.chatgpt.com/docs/build-plugins#plugin-structure) and [skill locations](https://learn.chatgpt.com/docs/build-skills#where-to-save-skills).
+**Generate a plugin template in another project**
+
+Build the installer from this checkout:
+
+```bash
+cd cli
+npm ci
+npm run build
+cd ..
+```
+
+In the target project, run the built installer using its absolute path:
+
+```bash
+node /absolute/path/to/finance-kit/cli/dist/index.js init --ai codex-plugin
+codex plugin marketplace add .
+```
+
+The [Codex plugin template](cli/assets/templates/platforms/codex-plugin.json)
+creates `.codex/plugins/finance-kit/` and registers it in
+`.agents/plugins/marketplace.json`. Other plugins and marketplace metadata are
+preserved; an existing `finance-kit` entry is replaced. Install Finance Kit from
+that marketplace in the Plugins Directory.
+
+After npm publication, the installer command is also available as
+`npx finance-kit-cli init --ai codex-plugin`.
+
+**Install a standalone skill**
+
+Use `codex` when you want the skill directly in `.agents/skills/finance-kit/`:
+
+```bash
+node /absolute/path/to/finance-kit/cli/dist/index.js init --ai codex
+```
+
+Restart Codex if the skill does not appear immediately, then invoke
+`$finance-kit` or ask a Vietnamese market analysis question naturally.
+
+For uninstall commands and the full CLI reference, see the [CLI README](cli/README.md).
+
+See OpenAI's [plugin packaging and marketplaces](https://developers.openai.com/plugins/build/plugins).
 
 </details>
 
@@ -104,14 +180,15 @@ See OpenAI's [Codex plugin structure](https://learn.chatgpt.com/docs/build-plugi
 **Add the marketplace:**
 
 ```
-/plugin marketplace add hongbietcode/claude-finance-kit
+/plugin marketplace add hongbietcode/finance-kit
 ```
 
 **Browse and install:**
 
-Run `/plugin` to open the plugin manager. Go to the **Discover** tab to find `claude-finance-kit`.
+Run `/plugin` to open the plugin manager. Go to the **Discover** tab to find `finance-kit`.
 
 Select it and choose an installation scope:
+
 - **User scope** — available across all projects
 - **Project scope** — available for all collaborators on this repository
 - **Local scope** — available only for you in this repository
@@ -119,7 +196,7 @@ Select it and choose an installation scope:
 Or install directly:
 
 ```
-/plugin install claude-finance-kit@hongbietcode-claude-finance-kit
+/plugin install finance-kit@finance-kit
 ```
 
 Run `/reload-plugins` to activate.
@@ -130,9 +207,9 @@ Run `/reload-plugins` to activate.
 <summary><strong>CLI alternatives (Claude Code, Cursor, Copilot)</strong></summary>
 
 ```bash
-npx claude-finance-kit-cli init --ai cursor    # Cursor
-npx claude-finance-kit-cli init --ai copilot   # GitHub Copilot
-npx claude-finance-kit-cli init --ai claude    # Claude Code (CLI alternative)
+npx finance-kit-cli init --ai cursor    # Cursor
+npx finance-kit-cli init --ai copilot   # GitHub Copilot
+npx finance-kit-cli init --ai claude    # Claude Code (CLI alternative)
 ```
 
 </details>
@@ -146,8 +223,10 @@ Once installed, just ask naturally — the plugin auto-invokes the right skill:
 "Market overview today"                                    → finance-kit (market briefing)
 "Compare VNM vs MSN"                                       → finance-kit (comparative)
 "Latest news sentiment for HPG"                            → finance-kit (news sentiment)
-/finance-kit "tôi mua HPG ở giá 26.6k, có nên bán không" → finance-kit (full analysis)
 ```
+
+To invoke the skill explicitly, use `$finance-kit` in Codex or `/finance-kit`
+in Claude Code, followed by your question.
 
 ### Python Library Usage
 
@@ -248,7 +327,8 @@ The `cfk backtest` command writes a backtest HTML report to
 ### Technical Analysis
 
 ```python
-from claude_finance_kit import Stock, Indicator
+from claude_finance_kit import Stock
+from claude_finance_kit.ta import Indicator
 
 stock = Stock("FPT")
 df = stock.quote.history(start="2025-01-01", end="2025-12-31")
@@ -293,18 +373,12 @@ ind.volume.obv()
 
 ## Plugin Architecture
 
-```
-src/claude_finance_kit/       # Python library (PyPI)
-cli/                          # npm CLI installer (claude-finance-kit-cli)
-├── assets/
-│   ├── skills/finance-kit/ # Single skill with references + scripts
-│   ├── agents/               # fundamental-analyst, technical-analyst, macro-researcher, lead-analyst
-│   ├── .codex-plugin/        # Codex plugin manifest
-│   └── templates/            # Platform configs (claude, codex, cursor, copilot)
-├── src/                      # CLI source code
-└── dist/                     # Built CLI
-.claude-plugin/               # Claude Marketplace manifest
-```
+- [Python library](src/claude_finance_kit/) — data APIs, strategies, and monitor runtime.
+- [CLI installer](cli/README.md) — platform installation and removal commands.
+- [Codex marketplace](.agents/plugins/marketplace.json) and [Claude Code marketplace](.claude-plugin/marketplace.json) — repository plugin catalogs.
+- [Codex manifest](cli/assets/.codex-plugin/plugin.json) and [Claude Code manifest](cli/assets/.claude-plugin/plugin.json) — metadata for the bundled plugin.
+- [Platform templates](cli/assets/templates/platforms/) — standalone skills and Codex plugin scaffolding.
+- [Finance Kit skill](cli/assets/skills/finance-kit/SKILL.md) — analysis workflows, references, and scripts.
 
 ### Skills & Agents
 
@@ -358,25 +432,21 @@ npm run bump -- patch      # Bump version (patch|minor|major)
 
 ### Version Sync
 
-`npm run bump` updates version across all files:
-
-| File | Field |
-|------|-------|
-| `pyproject.toml` | `version` |
-| `src/claude_finance_kit/__init__.py` | `__version__` |
-| `cli/package.json` | `version` |
-| `cli/assets/.claude-plugin/plugin.json` | `version` |
-| `cli/assets/.codex-plugin/plugin.json` | `version` |
-| `.claude-plugin/marketplace.json` | `plugins[0].version` |
+[`npm run bump`](cli/src/scripts/bump-version.ts) synchronizes the Python,
+npm, and plugin versions. The Codex marketplace reads the bundled plugin's
+manifest version.
 
 ### Publishing
 
-```bash
-npm run bump -- patch
-git commit -am "chore: bump version to X.Y.Z"
-git tag vX.Y.Z
-git push origin main --tags    # Triggers CI: PyPI + npm publish
-```
+The [release workflow](.github/workflows/release.yml) creates a release when a
+pull request merges into `main`, publishes Python/npm packages, and attaches
+the plugin ZIP. The [publish workflow](.github/workflows/publish.yml) also handles
+published GitHub releases. Pushing a tag alone does not trigger either workflow.
+
+To build the plugin archive locally, run `npm run package` inside `cli/` after
+building the installer. The output is `cli/finance-kit-<version>.zip` and includes
+both plugin manifests. The repository marketplace catalog is distributed with
+the repository itself.
 
 ## Contributing
 

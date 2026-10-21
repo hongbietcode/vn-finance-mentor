@@ -5,7 +5,7 @@
 Requires **Python 3.10+**.
 
 ```bash
-pip install claude-finance-kit
+pip install finance-kit
 ```
 
 Core dependencies installed automatically: `pandas`, `requests`, `pydantic`, `tenacity`.
@@ -15,19 +15,46 @@ Core dependencies installed automatically: `pandas`, `requests`, `pydantic`, `te
 Install additional modules as needed:
 
 ```bash
-pip install claude-finance-kit[ta]        # Technical analysis (no extra deps)
-pip install claude-finance-kit[collector]  # Batch data collector (duckdb, pyarrow, tqdm, aiohttp, websockets)
-pip install claude-finance-kit[news]      # News crawlers (scipy, pyarrow)
-pip install claude-finance-kit[search]    # Perplexity web search (perplexityai)
-pip install claude-finance-kit[all]       # Everything above
+pip install finance-kit[ta]        # Technical analysis (no extra deps)
+pip install finance-kit[collector]  # Batch data collector (duckdb, pyarrow, tqdm, aiohttp, websockets)
+pip install finance-kit[news]      # News crawlers (scipy, pyarrow)
+pip install finance-kit[search]    # Perplexity web search (perplexityai)
+pip install finance-kit[all]       # Everything above
 ```
 
 ### Codex Plugin
 
+From a checkout of this repository, register its bundled Codex marketplace:
+
+```bash
+codex plugin marketplace add .
+codex plugin marketplace list
+```
+
+Restart the ChatGPT desktop app and install Finance Kit from the **Finance Kit**
+marketplace in the Plugins Directory. The repo catalog at
+`.agents/plugins/marketplace.json` points to `cli/assets/`.
+
+To scaffold the plugin in a different project, run:
+
+```bash
+npx finance-kit-cli init --ai codex-plugin
+```
+
+This writes `.codex/plugins/finance-kit/` and merges its entry into
+`.agents/plugins/marketplace.json`, preserving other plugins. Register that
+project with `codex plugin marketplace add .`, then install through the directory.
+See the [official marketplace documentation](https://developers.openai.com/plugins/build/plugins).
+
+The new package names require publication. From source, use `pip install -e .`
+and build the CLI with `npm ci && npm run build` inside `cli/`; run its
+`dist/index.js` with Node from the target project. Python imports remain
+`claude_finance_kit` and the monitor command remains `cfk`.
+
 Install the bundled `finance-kit` skill into Codex's repository skill directory:
 
 ```bash
-npx claude-finance-kit-cli init --ai codex
+npx finance-kit-cli init --ai codex
 ```
 
 This creates `.agents/skills/finance-kit/` with its scripts and references. The
@@ -192,7 +219,7 @@ obv = ind.volume.obv()
 
 ### Collector
 
-Requires `pip install claude-finance-kit[collector]`.
+Requires `pip install finance-kit[collector]`.
 
 ```python
 from claude_finance_kit import collector
@@ -200,7 +227,7 @@ from claude_finance_kit import collector
 
 ### News
 
-Requires `pip install claude-finance-kit[news]`.
+Requires `pip install finance-kit[news]`.
 
 ```python
 from claude_finance_kit import news

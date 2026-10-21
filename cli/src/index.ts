@@ -17,13 +17,13 @@ const pkg = JSON.parse(readFileSync(join(__dirname, '..', 'package.json'), 'utf-
 const program = new Command();
 
 program
-  .name('claude-finance-kit')
-  .description('CLI to install claude-finance-kit plugin for AI coding assistants')
+  .name('finance-kit')
+  .description('CLI to install finance-kit plugin for AI coding assistants')
   .version(pkg.version);
 
 program
   .command('init')
-  .description('Install claude-finance-kit plugin to current project')
+  .description('Install finance-kit plugin to current project')
   .option('-a, --ai <type>', `AI assistant type (${AI_TYPES.join(', ')})`)
   .option('-f, --force', 'Overwrite existing files')
   .action(async (options) => {
@@ -40,7 +40,7 @@ program
 
 program
   .command('uninstall')
-  .description('Remove claude-finance-kit plugin from current project')
+  .description('Remove finance-kit plugin from current project')
   .option('-a, --ai <type>', `AI assistant type (${AI_TYPES.join(', ')})`)
   .action(async (options) => {
     if (options.ai && !AI_TYPES.includes(options.ai)) {

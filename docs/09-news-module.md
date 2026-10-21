@@ -2,7 +2,7 @@
 
 Crawl Vietnamese financial news from 12+ sites with RSS and sitemap support.
 
-**Install:** `pip install claude-finance-kit[news]`
+**Install:** `pip install finance-kit[news]`
 
 ## Quick Start
 
@@ -196,5 +196,5 @@ for a in articles:
 
 ## Dependencies
 
-Requires `[news]` extra: `pip install claude-finance-kit[news]`.
+Requires `[news]` extra: `pip install finance-kit[news]`.
 

@@ -38,7 +38,7 @@ _TYPE_ID = {
 _HEADERS = {
     "accept": "application/json",
     "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-    "user-agent": "claude-finance-kit/1.0",
+    "user-agent": "finance-kit/1.0",
 }
 
 

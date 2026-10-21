@@ -54,7 +54,7 @@ _FUND_LIST_MAPPING = {
 _HEADERS = {
     "accept": "application/json",
     "content-type": "application/json",
-    "user-agent": "claude-finance-kit/1.0",
+    "user-agent": "finance-kit/1.0",
 }
 
 

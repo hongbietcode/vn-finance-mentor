@@ -13,7 +13,7 @@ export interface InitOptions {
 }
 
 export async function initCommand(options: InitOptions): Promise<void> {
-  logger.title('claude-finance-kit Installer');
+  logger.title('finance-kit Installer');
 
   let aiType = options.ai;
 
@@ -61,15 +61,21 @@ export async function initCommand(options: InitOptions): Promise<void> {
     });
 
     console.log();
-    logger.success('claude-finance-kit installed successfully!');
+    logger.success('finance-kit installed successfully!');
 
     console.log();
     console.log(chalk.bold('Prerequisites:'));
-    console.log(chalk.dim('  pip install claude-finance-kit'));
+    console.log(chalk.dim('  pip install finance-kit'));
     console.log();
     console.log(chalk.bold('Next steps:'));
-    console.log(chalk.dim('  1. Restart your AI coding assistant'));
-    console.log(chalk.dim('  2. Try: "Analyze FPT stock"'));
+    if (config.pluginManifest) {
+      console.log(chalk.dim('  1. Run: codex plugin marketplace add .'));
+      console.log(chalk.dim('  2. Restart the ChatGPT desktop app and install Finance Kit from your marketplace'));
+      console.log(chalk.dim('  3. Try: "Analyze FPT stock"'));
+    } else {
+      console.log(chalk.dim('  1. Restart your AI coding assistant'));
+      console.log(chalk.dim('  2. Try: "Analyze FPT stock"'));
+    }
     console.log();
   } catch (error) {
     spinner.fail('Installation failed');

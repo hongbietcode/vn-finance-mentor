@@ -1,4 +1,4 @@
-"""Pydantic v2 data models for claude-finance-kit."""
+"""Pydantic v2 data models for finance-kit."""
 
 from datetime import UTC, date, datetime
 from typing import Any, Literal

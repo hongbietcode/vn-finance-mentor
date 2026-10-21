@@ -1,13 +1,13 @@
 {
-    "name": "claude-finance-kit",
-    "id": "claude-finance-kit",
+    "name": "finance-kit",
+    "id": "finance-kit",
     "description": "Vietnam-focused AI analysis plugin plus a Python runtime for VN/US market data, backtesting, unusual-flow alerts, and paper monitoring.",
     "owner": {
         "name": "hongbietcode"
     },
     "plugins": [
         {
-            "name": "claude-finance-kit",
+            "name": "finance-kit",
             "source": "./cli/assets",
             "description": "Vietnam-focused analysis workflows plus a VN/US Python data, backtest, and paper-monitor runtime. Existing finance-kit agents remain unchanged.",
             "version": "0.2.0",

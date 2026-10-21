@@ -9,7 +9,7 @@ This page reflects the `0.2.0` runtime.
 ## Install
 
 ```bash
-pip install "claude-finance-kit[monitor]"
+pip install "finance-kit[monitor]"
 cfk monitor init --config monitor.toml
 ```
 
