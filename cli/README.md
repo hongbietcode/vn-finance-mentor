@@ -73,9 +73,9 @@ Codex uses role prompts or sequential analysis as described in the skill.
 pip install vn-finance-mentor
 ```
 
-Use Python 3.12 for the verified setup. The command above requires a release
-under the new PyPI name; use the [source installation guide](../README.md#installation)
-until then. Python imports remain `claude_finance_kit`.
+Use Python 3.12 for the verified setup. For development, follow the
+[source installation guide](../README.md#installation). Python imports remain
+`claude_finance_kit`.
 
 ## Commands
 

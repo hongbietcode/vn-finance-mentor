@@ -46,8 +46,9 @@ This writes `.codex/plugins/vn-finance-mentor/` and merges its entry into
 project with `codex plugin marketplace add .`, then install through the directory.
 See the [official marketplace documentation](https://developers.openai.com/plugins/build/plugins).
 
-The new package names require publication. From source, use `pip install -e .`
-and build the CLI with `npm ci && npm run build` inside `cli/`; run its
+The npm installer requires publication under `vn-finance-mentor-cli` before
+the `npx` commands can be used. To use the installer from source, build the CLI
+with `npm ci && npm run build` inside `cli/`; run its
 `dist/index.js` with Node from the target project. Python imports remain
 `claude_finance_kit` and the monitor command remains `cfk`.
 
