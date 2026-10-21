@@ -1,10 +1,10 @@
 {
-    "name": "finance-kit-cli",
+    "name": "vn-finance-mentor-cli",
     "version": "0.2.0",
-    "description": "CLI to install finance-kit plugin for AI coding assistants",
+    "description": "CLI to install vn-finance-mentor plugin for AI coding assistants",
     "type": "module",
     "bin": {
-        "finance-kit": "./dist/index.js"
+        "vn-finance-mentor": "./dist/index.js"
     },
     "files": [
         "dist",

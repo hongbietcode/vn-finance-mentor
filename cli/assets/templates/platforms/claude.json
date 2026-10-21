@@ -14,5 +14,5 @@
   "frontmatter": {
     "format": "yaml"
   },
-  "description": "Full finance-kit plugin with skills, agents, hooks, commands, and references."
+  "description": "Full vn-finance-mentor plugin with skills, agents, hooks, commands, and references."
 }

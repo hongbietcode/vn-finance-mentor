@@ -53,7 +53,7 @@ class SSIStreamProvider(AsyncStreamProvider):
             from ssi_fc_data.fc_md_client import MarketDataClient
             from ssi_fc_data.fc_md_stream import MarketDataStream
         except ImportError as exc:
-            raise ImportError("ssi-fc-data is required: pip install finance-kit[monitor]") from exc
+            raise ImportError("ssi-fc-data is required: pip install vn-finance-mentor[monitor]") from exc
         targets = "ALL" if len(symbols) == 1 and symbols[0].upper() == "ALL" else "-".join(
             symbol.upper() for symbol in symbols
         )

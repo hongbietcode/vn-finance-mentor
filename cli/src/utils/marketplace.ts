@@ -14,16 +14,19 @@ interface Marketplace {
 }
 
 const MARKETPLACE_PATH = '.agents/plugins/marketplace.json';
-const PLUGIN_NAME = 'finance-kit';
+const PLUGIN_NAME = 'vn-finance-mentor';
 
 function getMarketplacePath(targetDir: string): string {
   return join(targetDir, MARKETPLACE_PATH);
 }
 
 function matchesPluginSource(entry: MarketplaceEntry, pluginRoot: string): boolean {
-  const sourcePath = typeof entry.source === 'string' ? entry.source :
-    entry.source?.source === 'local' ? entry.source.path : undefined;
-  return entry.name === PLUGIN_NAME && sourcePath === `./${pluginRoot}`;
+  if (entry.name !== PLUGIN_NAME) return false;
+
+  const expectedPath = `./${pluginRoot}`;
+  if (typeof entry.source === 'string') return entry.source === expectedPath;
+
+  return entry.source?.source === 'local' && entry.source.path === expectedPath;
 }
 
 export async function loadMarketplace(targetDir: string): Promise<Marketplace> {
@@ -33,7 +36,7 @@ export async function loadMarketplace(targetDir: string): Promise<Marketplace> {
     content = await readFile(path, 'utf-8');
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
-    return { name: 'finance-kit', interface: { displayName: 'Finance Kit' }, plugins: [] };
+    return { name: 'vn-finance-mentor', interface: { displayName: 'VN Finance Mentor' }, plugins: [] };
   }
   const marketplace = JSON.parse(content) as Marketplace;
   if (!marketplace || typeof marketplace.name !== 'string' || !marketplace.name ||

@@ -1,6 +1,6 @@
 # API Reference — News & Collector
 
-## News (requires `finance-kit[news]`)
+## News (requires `vn-finance-mentor[news]`)
 
 ### Crawlers
 
@@ -62,7 +62,7 @@ cafef, cafebiz, vietstock, vneconomy, plo, vnexpress, tuoitre, ktsg, ncdt, dddn,
 - If 429 error, wait 1-2 hours before retrying
 - Content may contain HTML — strip manually if needed
 
-## Collector (requires `finance-kit[collector]`)
+## Collector (requires `vn-finance-mentor[collector]`)
 
 ### Quick Start
 

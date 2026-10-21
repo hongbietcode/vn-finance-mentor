@@ -1,6 +1,6 @@
-# finance-kit-cli
+# vn-finance-mentor-cli
 
-CLI to install [finance-kit](https://github.com/hongbietcode/finance-kit) plugin for AI coding assistants.
+CLI to install [vn-finance-mentor](https://github.com/hongbietcode/vn-finance-mentor) plugin for AI coding assistants.
 
 Supports **Codex**, **Claude Code**, **Cursor**, and **GitHub Copilot**.
 
@@ -15,10 +15,10 @@ npm ci
 npm run build
 ```
 
-Run it from the project where you want to install Finance Kit:
+Run it from the project where you want to install VN Finance Mentor:
 
 ```bash
-node /absolute/path/to/finance-kit/cli/dist/index.js init --ai codex-plugin
+node /absolute/path/to/vn-finance-mentor/cli/dist/index.js init --ai codex-plugin
 ```
 
 The Python library must be installed in the environment used by your assistant.
@@ -27,28 +27,28 @@ setup and compatibility notes.
 
 ### From npm
 
-These commands require publication of the renamed `finance-kit-cli` package:
+These commands require publication of the renamed `vn-finance-mentor-cli` package:
 
 ```bash
-npx finance-kit-cli init --ai claude       # Claude Code
-npx finance-kit-cli init --ai codex        # Codex standalone skill
-npx finance-kit-cli init --ai codex-plugin # Codex plugin + marketplace
-npx finance-kit-cli init --ai cursor       # Cursor
-npx finance-kit-cli init --ai copilot      # GitHub Copilot
-npx finance-kit-cli init                   # Interactive (auto-detect)
+npx vn-finance-mentor-cli init --ai claude       # Claude Code
+npx vn-finance-mentor-cli init --ai codex        # Codex standalone skill
+npx vn-finance-mentor-cli init --ai codex-plugin # Codex plugin + marketplace
+npx vn-finance-mentor-cli init --ai cursor       # Cursor
+npx vn-finance-mentor-cli init --ai copilot      # GitHub Copilot
+npx vn-finance-mentor-cli init                   # Interactive (auto-detect)
 ```
 
 ## What Gets Installed
 
 The [platform templates](assets/templates/platforms/) define each assistant's
-installation layout. The [Finance Kit skill](assets/skills/finance-kit/SKILL.md)
+installation layout. The [VN Finance Mentor skill](assets/skills/vn-finance-mentor/SKILL.md)
 bundles the analysis workflows, references, and Python scripts.
 
-`codex` installs the standalone skill to `.agents/skills/finance-kit/`.
-`codex-plugin` creates `.codex/plugins/finance-kit/` with a
+`codex` installs the standalone skill to `.agents/skills/vn-finance-mentor/`.
+`codex-plugin` creates `.codex/plugins/vn-finance-mentor/` with a
 `.codex-plugin/plugin.json` manifest and bundled skill, then adds it to
 `.agents/plugins/marketplace.json`. Existing marketplace metadata and other
-plugins are preserved; an existing entry named `finance-kit` is replaced.
+plugins are preserved; an existing entry named `vn-finance-mentor` is replaced.
 
 From the target project, register the generated marketplace:
 
@@ -57,7 +57,7 @@ codex plugin marketplace add .
 codex plugin marketplace list
 ```
 
-Restart the ChatGPT desktop app and install Finance Kit from that marketplace
+Restart the ChatGPT desktop app and install VN Finance Mentor from that marketplace
 in the Plugins Directory. If the project already has a marketplace, choose its
 existing display name.
 
@@ -70,7 +70,7 @@ Codex uses role prompts or sequential analysis as described in the skill.
 ## Prerequisites
 
 ```bash
-pip install finance-kit
+pip install vn-finance-mentor
 ```
 
 Use Python 3.12 for the verified setup. The command above requires a release
@@ -80,9 +80,9 @@ until then. Python imports remain `claude_finance_kit`.
 ## Commands
 
 ```bash
-npx finance-kit-cli init --ai <platform>      # Install plugin or skill
-npx finance-kit-cli uninstall --ai <platform> # Remove generated files
-npx finance-kit-cli --version                # Show version
+npx vn-finance-mentor-cli init --ai <platform>      # Install plugin or skill
+npx vn-finance-mentor-cli uninstall --ai <platform> # Remove generated files
+npx vn-finance-mentor-cli --version                # Show version
 ```
 
 ## Uninstall
@@ -90,17 +90,17 @@ npx finance-kit-cli --version                # Show version
 For a source build, run this from the target project and confirm the prompt:
 
 ```bash
-node /absolute/path/to/finance-kit/cli/dist/index.js uninstall --ai codex-plugin
+node /absolute/path/to/vn-finance-mentor/cli/dist/index.js uninstall --ai codex-plugin
 ```
 
 For the published CLI:
 
 ```bash
-npx finance-kit-cli uninstall --ai claude
-npx finance-kit-cli uninstall --ai codex
-npx finance-kit-cli uninstall --ai codex-plugin
-npx finance-kit-cli uninstall --ai cursor
-npx finance-kit-cli uninstall --ai copilot
+npx vn-finance-mentor-cli uninstall --ai claude
+npx vn-finance-mentor-cli uninstall --ai codex
+npx vn-finance-mentor-cli uninstall --ai codex-plugin
+npx vn-finance-mentor-cli uninstall --ai cursor
+npx vn-finance-mentor-cli uninstall --ai copilot
 ```
 
 Uninstalling `codex-plugin` removes its generated plugin folder and matching

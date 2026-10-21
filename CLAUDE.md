@@ -1,6 +1,6 @@
-# Finance Kit Assistant
+# VN Finance Mentor Assistant
 
-Analysis-first coding assistant powered by the finance-kit Python library.
+Analysis-first coding assistant powered by the vn-finance-mentor Python library.
 
 ## Scope
 
@@ -18,15 +18,15 @@ Does NOT handle: portfolio management, trading bots, brokerage integrations, non
 
 | Name | Description |
 | ---- | ----------- |
-| `finance-kit` | Orchestrator skill (persona: Marcus Vance). Does NOT analyze data itself — routes queries by complexity tier (T1-T4), collects data via Python scripts, spawns specialist agents by name, assembles HTML reports. Single entry point for all analysis workflows. |
+| `vn-finance-mentor` | Orchestrator skill (persona: Marcus Vance). Does NOT analyze data itself — routes queries by complexity tier (T1-T4), collects data via Python scripts, spawns specialist agents by name, assembles HTML reports. Single entry point for all analysis workflows. |
 
 ## Agents (specialist — spawned by skill, trigger skill for data)
 
 | Name | Role |
 | ---- | ---- |
-| `fundamental-analyst` | Financials, valuation ratios, balance sheet health, earnings quality. Triggers `finance-kit` skill for data. |
-| `technical-analyst` | Trend identification, momentum signals, S/R levels, volume analysis. Triggers `finance-kit` skill for data. |
-| `macro-researcher` | GDP, CPI, interest rates, FX, FDI, trade balance, commodity impact. Triggers `finance-kit` skill for data. |
+| `fundamental-analyst` | Financials, valuation ratios, balance sheet health, earnings quality. Triggers `vn-finance-mentor` skill for data. |
+| `technical-analyst` | Trend identification, momentum signals, S/R levels, volume analysis. Triggers `vn-finance-mentor` skill for data. |
+| `macro-researcher` | GDP, CPI, interest rates, FX, FDI, trade balance, commodity impact. Triggers `vn-finance-mentor` skill for data. |
 | `lead-analyst` | Synthesis + decision for T3/T4 comparative/portfolio analysis. Coordinates `fundamental-analyst`, `technical-analyst`, `macro-researcher`. |
 | `html-report-writer` | Builds self-contained HTML reports with Tailwind + Plotly following the ZaloPay Fintech design system. |
 
@@ -34,13 +34,13 @@ Does NOT handle: portfolio management, trading bots, brokerage integrations, non
 
 | File | Content |
 | ---- | ------- |
-| `cli/assets/skills/finance-kit/references/stock-quote-company-finance-api.md` | Stock, Quote, Company, Finance, Listing, Trading |
-| `cli/assets/skills/finance-kit/references/market-macro-fund-commodity-api.md` | Market, Macro, Fund, Commodity |
-| `cli/assets/skills/finance-kit/references/technical-indicators-api.md` | All TA indicators with params |
-| `cli/assets/skills/finance-kit/references/news-crawler-collector-search-api.md` | News crawlers, Collector tasks, Perplexity Search |
-| `cli/assets/skills/finance-kit/references/valuation-screening-methodology.md` | Valuation, financial health, TA signals, screening, macro, sentiment, fund flows |
-| `cli/assets/skills/finance-kit/references/error-handling-and-common-patterns.md` | Error handling, caching, batch processing |
-| `cli/assets/skills/finance-kit/references/banking-realestate-consumer-sectors.md` | Banking NIM/NPL, Real estate NAV, Consumer ROIC |
+| `cli/assets/skills/vn-finance-mentor/references/stock-quote-company-finance-api.md` | Stock, Quote, Company, Finance, Listing, Trading |
+| `cli/assets/skills/vn-finance-mentor/references/market-macro-fund-commodity-api.md` | Market, Macro, Fund, Commodity |
+| `cli/assets/skills/vn-finance-mentor/references/technical-indicators-api.md` | All TA indicators with params |
+| `cli/assets/skills/vn-finance-mentor/references/news-crawler-collector-search-api.md` | News crawlers, Collector tasks, Perplexity Search |
+| `cli/assets/skills/vn-finance-mentor/references/valuation-screening-methodology.md` | Valuation, financial health, TA signals, screening, macro, sentiment, fund flows |
+| `cli/assets/skills/vn-finance-mentor/references/error-handling-and-common-patterns.md` | Error handling, caching, batch processing |
+| `cli/assets/skills/vn-finance-mentor/references/banking-realestate-consumer-sectors.md` | Banking NIM/NPL, Real estate NAV, Consumer ROIC |
 
 ## Disclaimer
 
@@ -48,7 +48,7 @@ Reports are for reference only, not investment advice. You are responsible for y
 
 ## Installation
 
-**⚠️ MANDATORY BEFORE ANY CODE EXECUTION:** Run `pip install -U finance-kit` to ensure latest version. Outdated versions WILL cause runtime errors. See [`references/installation-guide.md`](cli/assets/skills/finance-kit/references/installation-guide.md) for extras (`[all]`, `[ta]`, `[news]`, `[search]`).
+**⚠️ MANDATORY BEFORE ANY CODE EXECUTION:** Run `pip install -U vn-finance-mentor` to ensure latest version. Outdated versions WILL cause runtime errors. See [`references/installation-guide.md`](cli/assets/skills/vn-finance-mentor/references/installation-guide.md) for extras (`[all]`, `[ta]`, `[news]`, `[search]`).
 
 ## Quick API Lookup
 
@@ -90,7 +90,7 @@ Search         → PerplexitySearch().search("query") / search_multi(["q1","q2"]
 
 ## Complexity Routing
 
-Queries route to different agent structures based on complexity. See `cli/assets/skills/finance-kit/SKILL.md` for full orchestration protocol.
+Queries route to different agent structures based on complexity. See `cli/assets/skills/vn-finance-mentor/SKILL.md` for full orchestration protocol.
 
 | Tier              | Structure                             | When                                    | Example                                     |
 | ----------------- | ------------------------------------- | --------------------------------------- | ------------------------------------------- |

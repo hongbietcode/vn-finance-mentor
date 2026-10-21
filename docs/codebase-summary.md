@@ -1,11 +1,11 @@
 # Codebase Summary
 
-Snapshot of `finance-kit` generated from the current repository state and
+Snapshot of `vn-finance-mentor` generated from the current repository state and
 the `repomix-output.xml` pack.
 
 ## Purpose
 
-`finance-kit` is a Python library and CLI for Vietnam and US market data,
+`vn-finance-mentor` is a Python library and CLI for Vietnam and US market data,
 research signals, backtesting, and a self-hosted paper-monitor runtime.
 
 ## Current State

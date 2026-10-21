@@ -137,7 +137,7 @@ batch = bc.fetch_articles(limit=100)
 8. NaN warmup: TA indicators produce NaN for first N-1 rows
 9. Fund ID: use `fund.fund_filter(symbol)['id'].iloc[0]` (int) — not symbol directly
 
-10. No auth needed: finance-kit requires no API keys (except FMP for global stocks)
+10. No auth needed: vn-finance-mentor requires no API keys (except FMP for global stocks)
 11. Intervals: use `"30m"`, `"1H"` (not `"30M"`, `"1h"`) — case-sensitive
 12. News: `Crawler` and `BatchCrawler` are public exports; `NewsArticleParser`, `RSS`, `TrendingAnalyzer` require direct imports
 13. `BatchCrawler` requires either `site_name` or `custom_config` — omitting both raises error

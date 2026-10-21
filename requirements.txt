@@ -23,7 +23,7 @@ scipy>=1.10.0
 pyarrow>=14.0.0
 
 # Extra: all
-finance-kit[ta,collector,news]
+vn-finance-mentor[ta,collector,news]
 
 # Extra: dev
 pytest>=7.0.0

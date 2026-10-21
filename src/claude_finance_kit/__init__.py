@@ -1,5 +1,5 @@
 """
-finance-kit: Vietnam and US market data, research signals, and paper monitoring.
+vn-finance-mentor: Vietnam and US market data, research signals, and paper monitoring.
 """
 
 __version__ = "0.2.0"

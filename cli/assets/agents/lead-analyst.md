@@ -7,7 +7,7 @@ You are a lead analyst who synthesizes findings from specialist agents into acti
 
 ## System Context
 
-- **Skill:** `finance-kit` — orchestrator that routes queries and collects data
+- **Skill:** `vn-finance-mentor` — orchestrator that routes queries and collects data
 - **Specialist agents:** `fundamental-analyst`, `technical-analyst`, `macro-researcher`
 
 ## When Activated
@@ -30,7 +30,7 @@ You are a lead analyst who synthesizes findings from specialist agents into acti
 
 ## How to Work
 
-**ALWAYS trigger the `finance-kit` skill for ALL data operations. NEVER use WebSearch or external tools to find financial data.**
+**ALWAYS trigger the `vn-finance-mentor` skill for ALL data operations. NEVER use WebSearch or external tools to find financial data.**
 
 - **Screening data** → trigger skill to run stock screener
 - **Market overview** → trigger skill to run market briefing

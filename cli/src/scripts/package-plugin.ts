@@ -23,7 +23,7 @@ async function syncManifestVersion(manifestPath: string, version: string): Promi
 }
 
 async function main() {
-  logger.title('finance-kit Multi-Platform Plugin Packager');
+  logger.title('vn-finance-mentor Multi-Platform Plugin Packager');
 
   const spinner = ora('Packaging plugin...').start();
   const pkg = JSON.parse(await readFile(join(CLI_ROOT, 'package.json'), 'utf-8'));
@@ -35,7 +35,7 @@ async function main() {
     ]);
 
     const outputArg = process.argv[2];
-    const outputPath = outputArg || join(CLI_ROOT, `finance-kit-${pkg.version}.zip`);
+    const outputPath = outputArg || join(CLI_ROOT, `vn-finance-mentor-${pkg.version}.zip`);
 
     await createZipArchive(ASSETS_DIR, outputPath);
 
@@ -52,7 +52,7 @@ async function main() {
     console.log(chalk.dim('  .claude-plugin/          — plugin metadata'));
     console.log(chalk.dim('  .codex-plugin/           — Codex plugin manifest'));
     console.log(chalk.dim('  agents/                  — fundamental, technical, macro, lead'));
-    console.log(chalk.dim('  skills/finance-kit/   — skill + references + scripts'));
+    console.log(chalk.dim('  skills/vn-finance-mentor/   — skill + references + scripts'));
     console.log(chalk.dim('  templates/               — platform configs (claude, codex, codex-plugin, cursor, copilot)'));
     console.log();
   } catch (error) {

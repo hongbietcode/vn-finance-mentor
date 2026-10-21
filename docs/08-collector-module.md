@@ -2,7 +2,7 @@
 
 Batch ETL for stock data: fetch, transform, validate, and export.
 
-**Install:** `pip install finance-kit[collector]`
+**Install:** `pip install vn-finance-mentor[collector]`
 
 ## Quick Start
 

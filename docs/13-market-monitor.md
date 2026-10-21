@@ -9,7 +9,7 @@ This page reflects the `0.2.0` runtime.
 ## Install
 
 ```bash
-pip install "finance-kit[monitor]"
+pip install "vn-finance-mentor[monitor]"
 cfk monitor init --config monitor.toml
 ```
 

@@ -5,7 +5,7 @@
 Requires **Python 3.10+**.
 
 ```bash
-pip install finance-kit
+pip install vn-finance-mentor
 ```
 
 Core dependencies installed automatically: `pandas`, `requests`, `pydantic`, `tenacity`.
@@ -15,11 +15,11 @@ Core dependencies installed automatically: `pandas`, `requests`, `pydantic`, `te
 Install additional modules as needed:
 
 ```bash
-pip install finance-kit[ta]        # Technical analysis (no extra deps)
-pip install finance-kit[collector]  # Batch data collector (duckdb, pyarrow, tqdm, aiohttp, websockets)
-pip install finance-kit[news]      # News crawlers (scipy, pyarrow)
-pip install finance-kit[search]    # Perplexity web search (perplexityai)
-pip install finance-kit[all]       # Everything above
+pip install vn-finance-mentor[ta]        # Technical analysis (no extra deps)
+pip install vn-finance-mentor[collector]  # Batch data collector (duckdb, pyarrow, tqdm, aiohttp, websockets)
+pip install vn-finance-mentor[news]      # News crawlers (scipy, pyarrow)
+pip install vn-finance-mentor[search]    # Perplexity web search (perplexityai)
+pip install vn-finance-mentor[all]       # Everything above
 ```
 
 ### Codex Plugin
@@ -31,17 +31,17 @@ codex plugin marketplace add .
 codex plugin marketplace list
 ```
 
-Restart the ChatGPT desktop app and install Finance Kit from the **Finance Kit**
+Restart the ChatGPT desktop app and install VN Finance Mentor from the **VN Finance Mentor**
 marketplace in the Plugins Directory. The repo catalog at
 `.agents/plugins/marketplace.json` points to `cli/assets/`.
 
 To scaffold the plugin in a different project, run:
 
 ```bash
-npx finance-kit-cli init --ai codex-plugin
+npx vn-finance-mentor-cli init --ai codex-plugin
 ```
 
-This writes `.codex/plugins/finance-kit/` and merges its entry into
+This writes `.codex/plugins/vn-finance-mentor/` and merges its entry into
 `.agents/plugins/marketplace.json`, preserving other plugins. Register that
 project with `codex plugin marketplace add .`, then install through the directory.
 See the [official marketplace documentation](https://developers.openai.com/plugins/build/plugins).
@@ -51,15 +51,15 @@ and build the CLI with `npm ci && npm run build` inside `cli/`; run its
 `dist/index.js` with Node from the target project. Python imports remain
 `claude_finance_kit` and the monitor command remains `cfk`.
 
-Install the bundled `finance-kit` skill into Codex's repository skill directory:
+Install the bundled `vn-finance-mentor` skill into Codex's repository skill directory:
 
 ```bash
-npx finance-kit-cli init --ai codex
+npx vn-finance-mentor-cli init --ai codex
 ```
 
-This creates `.agents/skills/finance-kit/` with its scripts and references. The
+This creates `.agents/skills/vn-finance-mentor/` with its scripts and references. The
 release plugin archive also includes `.codex-plugin/plugin.json` for Codex plugin
-distribution. Restart Codex if `$finance-kit` is not visible immediately.
+distribution. Restart Codex if `$vn-finance-mentor` is not visible immediately.
 
 ---
 
@@ -219,7 +219,7 @@ obv = ind.volume.obv()
 
 ### Collector
 
-Requires `pip install finance-kit[collector]`.
+Requires `pip install vn-finance-mentor[collector]`.
 
 ```python
 from claude_finance_kit import collector
@@ -227,7 +227,7 @@ from claude_finance_kit import collector
 
 ### News
 
-Requires `pip install finance-kit[news]`.
+Requires `pip install vn-finance-mentor[news]`.
 
 ```python
 from claude_finance_kit import news

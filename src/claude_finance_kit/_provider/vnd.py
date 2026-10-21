@@ -41,7 +41,7 @@ _TOP_STOCK_COLS = {
 
 _HEADERS = {
     "accept": "application/json",
-    "user-agent": "finance-kit/1.0",
+    "user-agent": "vn-finance-mentor/1.0",
 }
 
 

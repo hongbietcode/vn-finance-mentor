@@ -357,7 +357,7 @@ def _monitor_health(args: argparse.Namespace) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="cfk", description="Finance Kit runtime")
+    parser = argparse.ArgumentParser(prog="cfk", description="VN Finance Mentor runtime")
     subcommands = parser.add_subparsers(dest="command", required=True)
 
     providers = subcommands.add_parser("providers", help="List provider capabilities")

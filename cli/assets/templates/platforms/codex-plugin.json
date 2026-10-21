@@ -2,7 +2,7 @@
   "platform": "codex-plugin",
   "displayName": "Codex Plugin",
   "folderStructure": {
-    "root": ".codex/plugins/finance-kit",
+    "root": ".codex/plugins/vn-finance-mentor",
     "skillPath": "skills",
     "filename": "SKILL.md"
   },

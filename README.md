@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">finance-kit</h1>
+  <h1 align="center">vn-finance-mentor</h1>
   <p align="center">
     Vietnam and US market data, research signals, and paper monitoring.
     <br />
@@ -8,17 +8,17 @@
 </p>
 
 <p align="center">
-  <a href="https://pypi.org/project/finance-kit/"><img src="https://img.shields.io/pypi/v/finance-kit?color=blue&label=PyPI" alt="PyPI Version" /></a>
-  <a href="https://www.npmjs.com/package/finance-kit-cli"><img src="https://img.shields.io/npm/v/finance-kit-cli?color=green&label=npm" alt="npm Version" /></a>
-  <a href="https://pypi.org/project/finance-kit/"><img src="https://img.shields.io/pypi/pyversions/finance-kit" alt="Python Versions" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/hongbietcode/finance-kit" alt="License" /></a>
+  <a href="https://pypi.org/project/vn-finance-mentor/"><img src="https://img.shields.io/pypi/v/vn-finance-mentor?color=blue&label=PyPI" alt="PyPI Version" /></a>
+  <a href="https://www.npmjs.com/package/vn-finance-mentor-cli"><img src="https://img.shields.io/npm/v/vn-finance-mentor-cli?color=green&label=npm" alt="npm Version" /></a>
+  <a href="https://pypi.org/project/vn-finance-mentor/"><img src="https://img.shields.io/pypi/pyversions/vn-finance-mentor" alt="Python Versions" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/hongbietcode/vn-finance-mentor" alt="License" /></a>
 </p>
 
 ---
 
 ## Overview
 
-**finance-kit** is a Python library for Vietnam/US market data,
+**vn-finance-mentor** is a Python library for Vietnam/US market data,
 deterministic research signals, backtesting, and self-hosted paper monitoring.
 The AI plugin provides Vietnamese market analysis for **Codex**, **Claude Code**,
 **Cursor**, and **GitHub Copilot**, with repository marketplaces for Codex and
@@ -39,11 +39,11 @@ Ask natural language questions — the plugin auto-routes to the right analysis 
 ### Example: Stock Analysis in Action
 
 <p align="center">
-  <a href="https://github.com/hongbietcode/finance-kit/releases/latest">
-    <img src="assets/image.png" alt="Finance Kit analyzing HPG stock" width="800" />
+  <a href="https://github.com/hongbietcode/vn-finance-mentor/releases/latest">
+    <img src="assets/image.png" alt="VN Finance Mentor analyzing HPG stock" width="800" />
   </a>
   <br />
-  <em>Claude Code analyzing HPG stock — orchestrating fundamental and technical agents in parallel. <a href="https://github.com/hongbietcode/finance-kit/releases/latest">Download plugin →</a></em>
+  <em>Claude Code analyzing HPG stock — orchestrating fundamental and technical agents in parallel. <a href="https://github.com/hongbietcode/vn-finance-mentor/releases/latest">Download plugin →</a></em>
 </p>
 
 ## Features
@@ -64,8 +64,8 @@ Ask natural language questions — the plugin auto-routes to the right analysis 
 
 ## Installation
 
-The Python distribution is `finance-kit`, the npm installer is `finance-kit-cli`,
-and its executable is `finance-kit`. Python code continues to import
+The Python distribution is `vn-finance-mentor`, the npm installer is `vn-finance-mentor-cli`,
+and its executable is `vn-finance-mentor`. Python code continues to import
 `claude_finance_kit`; monitor commands use `cfk`.
 
 Use Python **3.12** for the verified setup. The package currently declares
@@ -93,13 +93,13 @@ python -m pip install -e ".[monitor]"
 To install a published Python release from PyPI:
 
 ```bash
-pip install finance-kit
+pip install vn-finance-mentor
 ```
 
 For realtime monitoring:
 
 ```bash
-pip install "finance-kit[monitor]"
+pip install "vn-finance-mentor[monitor]"
 cfk monitor init
 cfk monitor doctor
 cfk monitor run
@@ -127,7 +127,7 @@ codex plugin marketplace list
 
 The [Codex marketplace catalog](.agents/plugins/marketplace.json) exposes the
 [bundled plugin](cli/assets/.codex-plugin/plugin.json). Restart the ChatGPT desktop app, open the Plugins Directory,
-choose the **Finance Kit** marketplace, and install **Finance Kit**.
+choose the **VN Finance Mentor** marketplace, and install **VN Finance Mentor**.
 
 **Generate a plugin template in another project**
 
@@ -143,29 +143,29 @@ cd ..
 In the target project, run the built installer using its absolute path:
 
 ```bash
-node /absolute/path/to/finance-kit/cli/dist/index.js init --ai codex-plugin
+node /absolute/path/to/vn-finance-mentor/cli/dist/index.js init --ai codex-plugin
 codex plugin marketplace add .
 ```
 
 The [Codex plugin template](cli/assets/templates/platforms/codex-plugin.json)
-creates `.codex/plugins/finance-kit/` and registers it in
+creates `.codex/plugins/vn-finance-mentor/` and registers it in
 `.agents/plugins/marketplace.json`. Other plugins and marketplace metadata are
-preserved; an existing `finance-kit` entry is replaced. Install Finance Kit from
+preserved; an existing `vn-finance-mentor` entry is replaced. Install VN Finance Mentor from
 that marketplace in the Plugins Directory.
 
 After npm publication, the installer command is also available as
-`npx finance-kit-cli init --ai codex-plugin`.
+`npx vn-finance-mentor-cli init --ai codex-plugin`.
 
 **Install a standalone skill**
 
-Use `codex` when you want the skill directly in `.agents/skills/finance-kit/`:
+Use `codex` when you want the skill directly in `.agents/skills/vn-finance-mentor/`:
 
 ```bash
-node /absolute/path/to/finance-kit/cli/dist/index.js init --ai codex
+node /absolute/path/to/vn-finance-mentor/cli/dist/index.js init --ai codex
 ```
 
 Restart Codex if the skill does not appear immediately, then invoke
-`$finance-kit` or ask a Vietnamese market analysis question naturally.
+`$vn-finance-mentor` or ask a Vietnamese market analysis question naturally.
 
 For uninstall commands and the full CLI reference, see the [CLI README](cli/README.md).
 
@@ -179,12 +179,12 @@ See OpenAI's [plugin packaging and marketplaces](https://developers.openai.com/p
 **Add the marketplace:**
 
 ```
-/plugin marketplace add hongbietcode/finance-kit
+/plugin marketplace add hongbietcode/vn-finance-mentor
 ```
 
 **Browse and install:**
 
-Run `/plugin` to open the plugin manager. Go to the **Discover** tab to find `finance-kit`.
+Run `/plugin` to open the plugin manager. Go to the **Discover** tab to find `vn-finance-mentor`.
 
 Select it and choose an installation scope:
 
@@ -195,7 +195,7 @@ Select it and choose an installation scope:
 Or install directly:
 
 ```
-/plugin install finance-kit@finance-kit
+/plugin install vn-finance-mentor@vn-finance-mentor
 ```
 
 Run `/reload-plugins` to activate.
@@ -206,9 +206,9 @@ Run `/reload-plugins` to activate.
 <summary><strong>CLI alternatives (Claude Code, Cursor, Copilot)</strong></summary>
 
 ```bash
-npx finance-kit-cli init --ai cursor    # Cursor
-npx finance-kit-cli init --ai copilot   # GitHub Copilot
-npx finance-kit-cli init --ai claude    # Claude Code (CLI alternative)
+npx vn-finance-mentor-cli init --ai cursor    # Cursor
+npx vn-finance-mentor-cli init --ai copilot   # GitHub Copilot
+npx vn-finance-mentor-cli init --ai claude    # Claude Code (CLI alternative)
 ```
 
 </details>
@@ -218,13 +218,13 @@ npx finance-kit-cli init --ai claude    # Claude Code (CLI alternative)
 Once installed, just ask naturally — the plugin auto-invokes the right skill:
 
 ```
-"Analyze FPT stock"                                        → finance-kit (stock deep dive)
-"Market overview today"                                    → finance-kit (market briefing)
-"Compare VNM vs MSN"                                       → finance-kit (comparative)
-"Latest news sentiment for HPG"                            → finance-kit (news sentiment)
+"Analyze FPT stock"                                        → vn-finance-mentor (stock deep dive)
+"Market overview today"                                    → vn-finance-mentor (market briefing)
+"Compare VNM vs MSN"                                       → vn-finance-mentor (comparative)
+"Latest news sentiment for HPG"                            → vn-finance-mentor (news sentiment)
 ```
 
-To invoke the skill explicitly, use `$finance-kit` in Codex or `/finance-kit`
+To invoke the skill explicitly, use `$vn-finance-mentor` in Codex or `/vn-finance-mentor`
 in Claude Code, followed by your question.
 
 ### Python Library Usage
@@ -377,13 +377,13 @@ ind.volume.obv()
 - [Codex marketplace](.agents/plugins/marketplace.json) and [Claude Code marketplace](.claude-plugin/marketplace.json) — repository plugin catalogs.
 - [Codex manifest](cli/assets/.codex-plugin/plugin.json) and [Claude Code manifest](cli/assets/.claude-plugin/plugin.json) — metadata for the bundled plugin.
 - [Platform templates](cli/assets/templates/platforms/) — standalone skills and Codex plugin scaffolding.
-- [Finance Kit skill](cli/assets/skills/finance-kit/SKILL.md) — analysis workflows, references, and scripts.
+- [VN Finance Mentor skill](cli/assets/skills/vn-finance-mentor/SKILL.md) — analysis workflows, references, and scripts.
 
 ### Skills & Agents
 
 | Component | Type | Role |
 |-----------|------|------|
-| `finance-kit` | Skill | Senior analyst orchestrator (Marcus Vance). Single entry point — routes by complexity, spawns specialists, produces reports |
+| `vn-finance-mentor` | Skill | Senior analyst orchestrator (Marcus Vance). Single entry point — routes by complexity, spawns specialists, produces reports |
 | `fundamental-analyst` | Agent | Financials, valuation, earnings (spawned by skill) |
 | `technical-analyst` | Agent | Price trends, momentum, S/R levels (spawned by skill) |
 | `macro-researcher` | Agent | GDP, CPI, rates, FX, commodities (spawned by skill) |
@@ -445,17 +445,17 @@ published GitHub releases. Pushing a tag alone does not trigger either workflow.
 To publish only the Python package at the version in `pyproject.toml`, run:
 
 ```bash
-gh workflow run publish.yml --repo hongbietcode/finance-kit --ref main
+gh workflow run publish.yml --repo hongbietcode/vn-finance-mentor --ref main
 ```
 
-PyPI Trusted Publishing must authorize repository `hongbietcode/finance-kit`,
+PyPI Trusted Publishing must authorize repository `hongbietcode/vn-finance-mentor`,
 workflow `publish.yml`, and environment `release`. Configure a pending publisher
 in [PyPI account publishing settings](https://pypi.org/manage/account/publishing/)
 before the first release under a new package name. The merge-triggered release
 workflow uses `release.yml` and needs its own trusted publisher.
 
 To build the plugin archive locally, run `npm run package` inside `cli/` after
-building the installer. The output is `cli/finance-kit-<version>.zip` and includes
+building the installer. The output is `cli/vn-finance-mentor-<version>.zip` and includes
 both plugin manifests. The repository marketplace catalog is distributed with
 the repository itself.
 

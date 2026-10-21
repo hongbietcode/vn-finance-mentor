@@ -33,7 +33,7 @@ export function getAITypeDescription(aiType: AIType): string {
     case 'codex':
       return 'Codex (.agents/skills/)';
     case 'codex-plugin':
-      return 'Codex Plugin (.codex/plugins/finance-kit/)';
+      return 'Codex Plugin (.codex/plugins/vn-finance-mentor/)';
     case 'cursor':
       return 'Cursor (.cursor/rules/)';
     case 'copilot':

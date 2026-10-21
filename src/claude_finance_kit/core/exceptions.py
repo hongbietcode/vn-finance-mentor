@@ -1,10 +1,10 @@
-"""Custom exception hierarchy for finance-kit."""
+"""Custom exception hierarchy for vn-finance-mentor."""
 
 from typing import Any
 
 
 class ClaudeFinanceKitError(Exception):
-    """Base exception for all finance-kit errors."""
+    """Base exception for all vn-finance-mentor errors."""
 
     def __init__(
         self,

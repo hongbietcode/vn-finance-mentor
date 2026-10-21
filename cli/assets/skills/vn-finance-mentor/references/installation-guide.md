@@ -1,14 +1,14 @@
-# finance-kit Python Package Installation Guide
+# vn-finance-mentor Python Package Installation Guide
 
 Always install **latest version**. Check first: if `.venv/` exists and `import claude_finance_kit` works, upgrade instead.
 
 ```bash
-pip install -U finance-kit              # Core (upgrade to latest)
-pip install -U "finance-kit[all]"       # All optional dependencies
-pip install -U "finance-kit[ta]"        # + Technical analysis
-pip install -U "finance-kit[collector]" # + Batch data collector
-pip install -U "finance-kit[news]"      # + News crawlers
-pip install -U "finance-kit[search]"    # + Perplexity web search
+pip install -U vn-finance-mentor              # Core (upgrade to latest)
+pip install -U "vn-finance-mentor[all]"       # All optional dependencies
+pip install -U "vn-finance-mentor[ta]"        # + Technical analysis
+pip install -U "vn-finance-mentor[collector]" # + Batch data collector
+pip install -U "vn-finance-mentor[news]"      # + News crawlers
+pip install -U "vn-finance-mentor[search]"    # + Perplexity web search
 ```
 
 Requires Python >= 3.10.

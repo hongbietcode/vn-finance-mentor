@@ -60,7 +60,7 @@ jobs:
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           gh release upload "${GITHUB_REF_NAME}" \
-            "cli/finance-kit-${VERSION}.zip" \
+            "cli/vn-finance-mentor-${VERSION}.zip" \
             --clobber
 
   publish-npm:

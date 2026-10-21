@@ -3,7 +3,7 @@
   "displayName": "Cursor",
   "folderStructure": {
     "root": ".cursor",
-    "skillPath": "rules/finance-kit",
+    "skillPath": "rules/vn-finance-mentor",
     "filename": "SKILL.md"
   },
   "components": {
@@ -14,5 +14,5 @@
   "frontmatter": {
     "format": "yaml"
   },
-  "description": "finance-kit skills and API references for Cursor."
+  "description": "vn-finance-mentor skills and API references for Cursor."
 }

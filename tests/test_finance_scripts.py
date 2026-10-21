@@ -1,4 +1,4 @@
-"""Compatibility tests for shipped finance-kit data scripts."""
+"""Compatibility tests for shipped vn-finance-mentor data scripts."""
 
 import importlib.util
 from pathlib import Path
@@ -6,7 +6,7 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).parents[1]
-SCRIPT_DIR = ROOT / "cli" / "assets" / "skills" / "finance-kit" / "scripts"
+SCRIPT_DIR = ROOT / "cli" / "assets" / "skills" / "vn-finance-mentor" / "scripts"
 
 
 def _load_script(name: str):

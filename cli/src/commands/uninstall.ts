@@ -31,7 +31,7 @@ async function removeBundledEntries(sourceDir: string, destinationDir: string): 
 }
 
 export async function uninstallCommand(options: UninstallOptions): Promise<void> {
-  logger.title('finance-kit Uninstaller');
+  logger.title('vn-finance-mentor Uninstaller');
 
   let aiType = options.ai;
 
@@ -70,7 +70,7 @@ export async function uninstallCommand(options: UninstallOptions): Promise<void>
     const confirm = await prompts({
       type: 'confirm',
       name: 'proceed',
-      message: `Remove finance-kit files from ${chalk.red(skillDir)}?`,
+      message: `Remove vn-finance-mentor files from ${chalk.red(skillDir)}?`,
       initial: false,
     });
 
@@ -82,7 +82,7 @@ export async function uninstallCommand(options: UninstallOptions): Promise<void>
     if (config.pluginManifest) {
       await unregisterPlugin(cwd, config.folderStructure.root);
       await rm(componentRoot, { recursive: true, force: true });
-      logger.success(`finance-kit removed from ${getAITypeDescription(aiType)}`);
+      logger.success(`vn-finance-mentor removed from ${getAITypeDescription(aiType)}`);
       return;
     }
 
@@ -98,7 +98,7 @@ export async function uninstallCommand(options: UninstallOptions): Promise<void>
       const agentsDir = join(componentRoot, 'agents');
       await removeBundledEntries(join(ASSETS_DIR, 'agents'), agentsDir);
     }
-    logger.success(`finance-kit removed from ${getAITypeDescription(aiType)}`);
+    logger.success(`vn-finance-mentor removed from ${getAITypeDescription(aiType)}`);
   } catch (error) {
     if (error instanceof Error) {
       logger.error(error.message);

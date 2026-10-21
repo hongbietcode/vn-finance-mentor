@@ -1,6 +1,6 @@
 {
-    "name": "finance-kit",
-    "description": "Vietnam-focused analysis plugin plus a VN/US Python data, backtest, and paper-monitor runtime. Existing finance-kit agents remain unchanged.",
+    "name": "vn-finance-mentor",
+    "description": "Vietnam-focused analysis plugin plus a VN/US Python data, backtest, and paper-monitor runtime. Existing vn-finance-mentor agents remain unchanged.",
     "version": "0.2.0",
     "author": {
         "name": "hongbietcode"

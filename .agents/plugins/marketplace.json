@@ -1,11 +1,11 @@
 {
-  "name": "finance-kit",
+  "name": "vn-finance-mentor",
   "interface": {
-    "displayName": "Finance Kit"
+    "displayName": "VN Finance Mentor"
   },
   "plugins": [
     {
-      "name": "finance-kit",
+      "name": "vn-finance-mentor",
       "source": {
         "source": "local",
         "path": "./cli/assets"

@@ -1,6 +1,6 @@
 # API Reference — Technical Analysis
 
-Requires `pip install finance-kit[ta]`.
+Requires `pip install vn-finance-mentor[ta]`.
 
 ## Setup
 
