@@ -1,4 +1,4 @@
-name: Auto Release & Publish
+name: Auto Release
 
 on:
   pull_request:
@@ -11,9 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    outputs:
-      version: ${{ steps.bump.outputs.version }}
-      tag: ${{ steps.bump.outputs.tag }}
+      actions: write
     steps:
       - uses: actions/checkout@v5
         with:
@@ -71,90 +69,12 @@ jobs:
             --title "v${{ steps.bump.outputs.version }}" \
             --notes "${{ steps.changelog.outputs.body }}"
 
-  publish-pypi:
-    needs: release
-    runs-on: ubuntu-latest
-    environment: release
-    permissions:
-      id-token: write
-    steps:
-      - uses: actions/checkout@v5
-
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-
-      - name: Set version
-        run: |
-          sed -i "s/^version = \".*\"/version = \"${{ needs.release.outputs.version }}\"/" pyproject.toml
-
-      - name: Build
-        run: |
-          pip install build
-          python -m build --wheel --sdist
-
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-
-  package-plugin:
-    needs: release
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v5
-
-      - uses: actions/setup-node@v5
-        with:
-          node-version: "20"
-
-      - name: Set version
-        working-directory: cli
-        run: |
-          npm version "${{ needs.release.outputs.version }}" --no-git-tag-version --allow-same-version
-
-      - name: Install and build CLI
-        working-directory: cli
-        run: |
-          npm ci
-          npm run build
-
-      - name: Package plugin
-        working-directory: cli
-        run: npm run package
-
-      - name: Upload plugin to release
+      # Releases created with GITHUB_TOKEN don't fire release events, so dispatch
+      # publishing explicitly; npm and PyPI trust only publish.yml.
+      - name: Trigger publish
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release upload "${{ needs.release.outputs.tag }}" \
-            "cli/vn-finance-mentor-${{ needs.release.outputs.version }}.zip" \
-            --clobber
-
-  publish-npm:
-    needs: release
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-
-      - uses: actions/setup-node@v5
-        with:
-          node-version: "20"
-          registry-url: "https://registry.npmjs.org"
-
-      - name: Set version
-        working-directory: cli
-        run: |
-          npm version "${{ needs.release.outputs.version }}" --no-git-tag-version --allow-same-version
-
-      - name: Install and build CLI
-        working-directory: cli
-        run: |
-          npm ci
-          npm run build
-
-      - name: Publish to npm
-        working-directory: cli
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          gh workflow run publish.yml \
+            --repo "${{ github.repository }}" \
+            --ref "${{ steps.bump.outputs.tag }}"

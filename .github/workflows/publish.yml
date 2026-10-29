@@ -19,7 +19,7 @@ jobs:
           python-version: "3.12"
 
       - name: Set version from tag
-        if: github.event_name == 'release'
+        if: github.ref_type == 'tag'
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           sed -i "s/^version = \".*\"/version = \"${VERSION}\"/" pyproject.toml
@@ -31,9 +31,11 @@ jobs:
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          skip-existing: true
 
   package-plugin:
-    if: github.event_name == 'release'
+    if: github.ref_type == 'tag'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -43,6 +45,12 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: "20"
+
+      - name: Set version from tag
+        working-directory: cli
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          npm version "${VERSION}" --no-git-tag-version --allow-same-version
 
       - name: Install and build CLI
         working-directory: cli
@@ -64,17 +72,21 @@ jobs:
             --clobber
 
   publish-npm:
-    if: github.event_name == 'release'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v5
 
+      # npm trusted publishing (OIDC) needs npm >= 11.5.1, bundled with Node 24
       - uses: actions/setup-node@v5
         with:
-          node-version: "20"
+          node-version: "24"
           registry-url: "https://registry.npmjs.org"
 
       - name: Set version from tag
+        if: github.ref_type == 'tag'
         working-directory: cli
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
@@ -89,5 +101,3 @@ jobs:
       - name: Publish to npm
         working-directory: cli
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
