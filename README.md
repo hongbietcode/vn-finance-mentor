@@ -437,22 +437,32 @@ manifest version.
 
 ### Publishing
 
-The [release workflow](.github/workflows/release.yml) creates a release when a
-pull request merges into `main`, publishes Python/npm packages, and attaches
-the plugin ZIP. The [publish workflow](.github/workflows/publish.yml) also handles
-published GitHub releases. Pushing a tag alone does not trigger either workflow.
+The [release workflow](.github/workflows/release.yml) bumps the patch version
+from the latest `v*` tag and creates a GitHub release when a pull request merges
+into `main`, then dispatches the [publish workflow](.github/workflows/publish.yml)
+on the new tag. The publish workflow is the only one that publishes: it ships the
+Python and npm packages and attaches the plugin ZIP. It also runs for releases
+published manually on GitHub. Pushing a tag alone does not trigger either workflow.
 
-To publish only the Python package at the version in `pyproject.toml`, run:
+To publish the Python and npm packages at the versions in `pyproject.toml` and
+`cli/package.json`, run:
 
 ```bash
 gh workflow run publish.yml --repo hongbietcode/vn-finance-mentor --ref main
 ```
 
-PyPI Trusted Publishing must authorize repository `hongbietcode/vn-finance-mentor`,
-workflow `publish.yml`, and environment `release`. Configure a pending publisher
-in [PyPI account publishing settings](https://pypi.org/manage/account/publishing/)
-before the first release under a new package name. The merge-triggered release
-workflow uses `release.yml` and needs its own trusted publisher.
+PyPI skips a version that already exists; npm fails if the version already exists.
+
+Both registries use Trusted Publishing (OIDC), so no publish token is stored:
+
+- **PyPI:** repository `hongbietcode/vn-finance-mentor`, workflow `publish.yml`,
+  environment `release`. Configure a pending publisher in
+  [PyPI account publishing settings](https://pypi.org/manage/account/publishing/)
+  before the first release under a new package name.
+- **npm:** repository `hongbietcode/vn-finance-mentor`, workflow `publish.yml`,
+  no environment. Configure it under the package's Settings → Trusted Publisher
+  on npmjs.com. A brand-new package name must be published once by hand first.
+  The `repository.url` in `cli/package.json` must match the GitHub repository.
 
 To build the plugin archive locally, run `npm run package` inside `cli/` after
 building the installer. The output is `cli/vn-finance-mentor-<version>.zip` and includes
